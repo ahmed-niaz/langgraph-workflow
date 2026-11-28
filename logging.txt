@@ -1,0 +1,6 @@
+Your Conversation Log:
+
+You: hi i am nest
+AI: Hi Nest! Nice to meet you. How can I help you today?
+
+End of Conversation

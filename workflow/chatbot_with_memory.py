@@ -78,3 +78,18 @@ if __name__ == "__main__":
             ),
             config=cast(Any, config),
         )
+
+    # Save conversation log from memory checkpoint
+    checkpoint_state = agent.get_state(cast(Any, config))
+    conversation_history = checkpoint_state.values.get("messages", [])
+
+    with open("logging.txt", "w", encoding="utf-8") as file:
+        file.write("Your Conversation Log:\n\n")
+        for message in conversation_history:
+            if isinstance(message, HumanMessage):
+                file.write(f"You: {message.content}\n")
+            elif isinstance(message, AIMessage):
+                file.write(f"AI: {message.content}\n\n")
+        file.write("End of Conversation\n")
+
+    print("Conversation saved to logging.txt")
